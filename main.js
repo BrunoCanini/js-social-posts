@@ -148,6 +148,10 @@ for (let i = 0; i < posts.length; i++) {
     numberLike.textContent = `${element.likes}`;
     counterLike.append(numberLike);
 
+    // reattività bottone like
+    counterLike.addEventListener ("click" , function () {
+        console.log("ciao");
+    });
 
+};
 
-}
