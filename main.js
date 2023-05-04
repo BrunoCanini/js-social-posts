@@ -58,35 +58,38 @@ const posts = [
 
 const containerGeneral = document.getElementById("container")
 
+function createDivAppend(containerPadre, classi, content=undefined){
+    const container = document.createElement("div");
+    container.classList.add(...classi);
+    if( content !== undefined ){
+        container.textContent = content
+    }
+    containerPadre.append(container);
+    return container;
+}
+
+function createImgAppend(containerPadre, classe, imgSource){
+    const container = document.createElement("img");
+    container.classList.add(classe);
+    container.src = imgSource;
+    containerPadre.append(container);
+}
+
 for (let i = 0; i < posts.length; i++) {
     const element = posts[i];
 
-    let containerPost = document.createElement("div")
-    containerPost.classList.add("post");
-    containerGeneral.append(containerPost);
+    const containerPost = createDivAppend(containerGeneral , ["post"]);
 
     // creazione post header
-    let postHeaderJs = document.createElement("div")
-    postHeaderJs.classList.add("post__header");
-    containerPost.append(postHeaderJs);
+    const postHeaderJs = createDivAppend(containerPost , ["post__header"]);
 
-    let childHeader = document.createElement("div")
-    childHeader.classList.add("post-meta__icon");
-    postHeaderJs.append(childHeader);
+    const childHeader = createDivAppend(postHeaderJs , ["post-meta__icon"]);
 
-    let image = document.createElement("img")
-    image.src = `${element.author.image}`
-    image.classList.add("profile-pic");
-    childHeader.append(image);
+    createImgAppend(childHeader, "profile-pic", element.author.image);
 
-    let secondChildHeader = document.createElement("div");
-    secondChildHeader.classList.add("post-meta__data");
-    childHeader.append(secondChildHeader);
+    const secondChildHeader = createDivAppend(childHeader,["post-meta__data"]);
 
-    let childSecondChildHeader = document.createElement("div");
-    childSecondChildHeader.classList.add("post-meta__author");
-    childSecondChildHeader.textContent = `${element.author.name}`;
-    secondChildHeader.append(childSecondChildHeader);
+    const childSecondChildHeader = createDivAppend(secondChildHeader, ["post-meta__author"], element.author.name);
 
     let secondChildSecondChildHeader = document.createElement("div");
     secondChildSecondChildHeader.classList.add("post-meta__time");
@@ -145,12 +148,14 @@ for (let i = 0; i < posts.length; i++) {
 
     let numberLike = document.createElement("b");
     numberLike.classList.add("js-likes-counter");
-    numberLike.textContent = `${element.likes}`;
+    numberLike.textContent = element.likes;
     counterLike.append(numberLike);
 
     // reattività bottone like
-    counterLike.addEventListener ("click" , function () {
-        console.log("ciao");
+    childChildFooter.addEventListener ("click" , function () {
+        if( parseInt(numberLike.textContent) === element.likes){
+            numberLike.textContent++;
+        }
     });
 
 };
