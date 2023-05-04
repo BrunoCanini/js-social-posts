@@ -109,28 +109,44 @@ for (let i = 0; i < posts.length; i++) {
     containerImage.append(postImage);
 
     // creazione post footer
-    // const containerFooterJs = document.createElement("div");
-    // containerFooterJs.classList.add("post__footer");
-    // containerPost.append(containerFooterJs);
+    let containerFooterJs = document.createElement("div");
+    containerFooterJs.classList.add("post__footer");
+    containerPost.append(containerFooterJs);
 
-    // const childFooter = document.createElement("div");
-    // childFooter.classList.add("likes js-likes");
-    // containerFooterJs.append(childFooter);
+    let childFooter = document.createElement("div");
+    childFooter.classList.add("likes");
+    childFooter.classList.add("js-likes");
+    containerFooterJs.append(childFooter);
 
-    // const childChildFooter = document.createElement("div");
-    // childChildFooter.classList.add("likes__cta");
-    // childFooter.append(childChildFooter);
+    const childChildFooter = document.createElement("div");
+    childChildFooter.classList.add("likes__cta");
+    childFooter.append(childChildFooter);
 
-    // const linkFooter = document.createElement("a");
-    // linkFooter.classList.add("like-button");
-    // linkFooter.classList.add("js-like-button");
-    // childChildFooter.append(linkFooter);
+    const linkFooter = document.createElement("a");
+    linkFooter.classList.add("like-button");
+    linkFooter.classList.add("js-like-button");
+    childChildFooter.append(linkFooter);
 
-    // const picLike = document.createElement("i");
-    // picLike.classList.add("like-button__icon");
-    // picLike.classList.add("fas");
-    // picLike.classList.add("fa-thumbs-up");
-    // linkFooter.append(picLike);
+    const picLike = document.createElement("i");
+    picLike.classList.add("like-button__icon");
+    picLike.classList.add("fas");
+    picLike.classList.add("fa-thumbs-up");
+    linkFooter.append(picLike);
+
+    let textLike = document.createElement("span");
+    textLike.classList.add("like-button__label");
+    textLike.textContent = " Mi Piace"
+    linkFooter.append(textLike);
+
+    let counterLike = document.createElement("div");
+    counterLike.classList.add("likes__counter");
+    counterLike.textContent = "Piace a ";
+    childFooter.append(counterLike);
+
+    let numberLike = document.createElement("b");
+    numberLike.classList.add("js-likes-counter");
+    numberLike.textContent = `${element.likes}`;
+    counterLike.append(numberLike);
 
 
 
