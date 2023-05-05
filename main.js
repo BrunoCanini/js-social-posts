@@ -139,7 +139,8 @@ for (let i = 0; i < posts.length; i++) {
             numberLike.textContent++;
         }
 
-        picLike.style.color = "blue"
+        picLike.style.color = "blue";
+        textLike.style.color = "blue";
 
     });
 
