@@ -91,46 +91,31 @@ for (let i = 0; i < posts.length; i++) {
 
     const childSecondChildHeader = createDivAppend(secondChildHeader, ["post-meta__author"], element.author.name);
 
-    let secondChildSecondChildHeader = document.createElement("div");
-    secondChildSecondChildHeader.classList.add("post-meta__time");
-    secondChildSecondChildHeader.textContent = `${element.created}`;
-    secondChildHeader.append(secondChildSecondChildHeader);
+    const secondChildSecondChildHeader = createDivAppend(secondChildHeader, ["post-meta__time"], element.created);
 
     // creazione post text
-    let postTextJs = document.createElement("div");
-    postTextJs.classList.add("post__text");
-    postTextJs.textContent = `${element.content}`;
-    containerPost.append(postTextJs);
+    const postTextJs = createDivAppend(containerPost, ["post__text"], element.content);
 
     // creazione post image
-    let containerImage = document.createElement("div");
-    containerImage.classList.add("post__image");
-    containerPost.append(containerImage);
+    const containerImage = createDivAppend(containerPost, ["post__image"]);
 
     let postImage = document.createElement("img");
     postImage.src = `${element.media}`;
     containerImage.append(postImage);
 
     // creazione post footer
-    let containerFooterJs = document.createElement("div");
-    containerFooterJs.classList.add("post__footer");
-    containerPost.append(containerFooterJs);
+    const containerFooterJs = createDivAppend(containerPost, ["post__footer"]);
 
-    let childFooter = document.createElement("div");
-    childFooter.classList.add("likes");
-    childFooter.classList.add("js-likes");
-    containerFooterJs.append(childFooter);
+    const childFooter = createDivAppend(containerFooterJs, ["likes", "js-likes"]);
 
-    const childChildFooter = document.createElement("div");
-    childChildFooter.classList.add("likes__cta");
-    childFooter.append(childChildFooter);
+    const childChildFooter = createDivAppend(childFooter, ["likes__cta"]);
 
     const linkFooter = document.createElement("a");
     linkFooter.classList.add("like-button");
     linkFooter.classList.add("js-like-button");
     childChildFooter.append(linkFooter);
 
-    const picLike = document.createElement("i");
+    let picLike = document.createElement("i");
     picLike.classList.add("like-button__icon");
     picLike.classList.add("fas");
     picLike.classList.add("fa-thumbs-up");
@@ -141,10 +126,7 @@ for (let i = 0; i < posts.length; i++) {
     textLike.textContent = " Mi Piace"
     linkFooter.append(textLike);
 
-    let counterLike = document.createElement("div");
-    counterLike.classList.add("likes__counter");
-    counterLike.textContent = "Piace a ";
-    childFooter.append(counterLike);
+    const counterLike = createDivAppend( childFooter, ["likes__counter"]);
 
     let numberLike = document.createElement("b");
     numberLike.classList.add("js-likes-counter");
@@ -156,6 +138,9 @@ for (let i = 0; i < posts.length; i++) {
         if( parseInt(numberLike.textContent) === element.likes){
             numberLike.textContent++;
         }
+
+        picLike.style.color = "blue"
+
     });
 
 };
